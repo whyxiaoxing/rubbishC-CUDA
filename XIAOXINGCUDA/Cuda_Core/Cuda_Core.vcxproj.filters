@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CudaCompile Include="CudaArray_To_JPG.cu" />
+    <CudaCompile Include="d3dtocuda.cu" />
+    <CudaCompile Include="externDLL.cu" />
+    <CudaCompile Include="Kernel_one.cu" />
+    <CudaCompile Include="kernel_two.cu" />
+    <CudaCompile Include="Pic_Cut_Size.cu" />
+    <CudaCompile Include="SwitchDataToOnnx.cu" />
+    <CudaCompile Include="xunzhao-F.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="d3dtocuda.cuh" />
+    <ClInclude Include="ERROR.cuh" />
+    <ClInclude Include="Found_F_SourceCode.cuh" />
+    <ClInclude Include="PIC_Cut_Size.cuh" />
+    <ClInclude Include="SimpleIni.h" />
+    <ClInclude Include="supper_the_test.cuh" />
+    <ClInclude Include="SwitchDataToOnnx.cuh" />
+    <ClInclude Include="tools.cuh" />
+    <ClInclude Include="XIAOXING_CUDAkenel.cuh" />
+    <ClInclude Include="ConvertUTF.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="read.md" />
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConvertUTF.c" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Cuda_Core/Cuda_Core.vcxproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="ShareFunctionDLL/ShareFunctionDLL.vcxproj" Id="51610e39-2b3d-4540-9e1f-e6d1b35613b5" />
+  <Project Path="WGC_DLL/WGC_DLL.vcxproj" Id="d177cfc0-8974-47b3-a538-7f9228acd00e">
+    <BuildDependency Project="ShareFunctionDLL/ShareFunctionDLL.vcxproj" />
+  </Project>
+  <Project Path="XIAOXINGCUDA.vcxproj" Id="b574d047-7941-45ad-b9c6-216886cc8254">
+    <BuildDependency Project="Cuda_Core/Cuda_Core.vcxproj" />
+    <BuildDependency Project="ShareFunctionDLL/ShareFunctionDLL.vcxproj" />
+    <BuildDependency Project="WGC_DLL/WGC_DLL.vcxproj" />
+  </Project>
+</Solution>

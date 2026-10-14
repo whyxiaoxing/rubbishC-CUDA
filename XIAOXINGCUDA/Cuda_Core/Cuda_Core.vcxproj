@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="CudaArray_To_JPG.cu" />
+    <CudaCompile Include="d3dtocuda.cu" />
+    <CudaCompile Include="externDLL.cu" />
+    <CudaCompile Include="Kernel_one.cu" />
+    <CudaCompile Include="kernel_two.cu" />
+    <CudaCompile Include="Pic_Cut_Size.cu" />
+    <CudaCompile Include="SwitchDataToOnnx.cu" />
+    <CudaCompile Include="xunzhao-F.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ConvertUTF.h" />
+    <ClInclude Include="d3dtocuda.cuh" />
+    <ClInclude Include="ERROR.cuh" />
+    <ClInclude Include="Found_F_SourceCode.cuh" />
+    <ClInclude Include="PIC_Cut_Size.cuh" />
+    <ClInclude Include="SimpleIni.h" />
+    <ClInclude Include="supper_the_test.cuh" />
+    <ClInclude Include="SwitchDataToOnnx.cuh" />
+    <ClInclude Include="tools.cuh" />
+    <ClInclude Include="XIAOXING_CUDAkenel.cuh" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+    <None Include="read.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ConvertUTF.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7582B6D8-EE83-D969-7CC1-4105891F34C0}</ProjectGuid>
+    <RootNamespace>Cuda_Core</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+    <VCToolsVersion>14.51.36231</VCToolsVersion>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+    <VCToolsVersion>14.51.36231</VCToolsVersion>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="CUDA Toolkit Configuration">
+    <CudaToolkitCustomDir Condition="'$(CUDA_PATH)' != ''">$(CUDA_PATH)\</CudaToolkitCustomDir>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 13.2.props" />
+  </ImportGroup>
+  <PropertyGroup Label="CUDA Project Dependencies">
+    <CudaAdditionalLibraryDirectories>$(CudaToolkitLibDir)</CudaAdditionalLibraryDirectories>
+    <CudaAdditionalLibraries>nvjpeg.lib</CudaAdditionalLibraries>
+    <CudaRuntimeDllDirectory>$(ProjectDir)DLL</CudaRuntimeDllDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <CudaRuntimeDll Include="$(CudaRuntimeDllDirectory)\*.dll" />
+  </ItemGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>F:\c#2\XIAOXING_Cuda\</OutDir>
+    <IntDir>F:\c#2\XIAOXING_Cuda\mid\cuda\</IntDir>
+    <TargetName>XIAOXING_CUDA_Core</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>F:\c#2\XIAOXING_Cuda\</OutDir>
+    <IntDir>F:\c#2\XIAOXING_Cuda\mid\cuda\</IntDir>
+    <TargetName>XIAOXING_CUDA_Core</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;WIN64;__CUDACC__;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <AdditionalIncludeDirectories>$(CudaToolkitIncludeDir);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(CudaAdditionalLibraryDirectories);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CudaAdditionalLibraries);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <InterleaveSourceInPTX>false</InterleaveSourceInPTX>
+      <CodeGeneration>compute_89,sm_89;compute_120,sm_120</CodeGeneration>
+      <FastMath>true</FastMath>
+      <FastCompile>Off</FastCompile>
+      <AdditionalCompilerOptions>/utf-8</AdditionalCompilerOptions>
+      <AdditionalOptions>--std=c++20</AdditionalOptions>
+      <Optimization>O2</Optimization>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WIN64;__CUDACC__;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(CudaToolkitIncludeDir);$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(CudaAdditionalLibraryDirectories);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CudaAdditionalLibraries);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <InterleaveSourceInPTX>false</InterleaveSourceInPTX>
+      <CodeGeneration>compute_89,sm_89;compute_120,sm_120</CodeGeneration>
+      <FastMath>true</FastMath>
+      <FastCompile>Max</FastCompile>
+      <AdditionalCompilerOptions>/utf-8</AdditionalCompilerOptions>
+      <AdditionalOptions>--std=c++20</AdditionalOptions>
+      <Optimization>O2</Optimization>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 13.2.targets" />
+  </ImportGroup>
+  <Target Name="CopyCudaRuntimeDlls" AfterTargets="Build" Condition="'@(CudaRuntimeDll)' != ''">
+    <MakeDir Directories="$(OutDir)" />
+    <Copy SourceFiles="@(CudaRuntimeDll)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
